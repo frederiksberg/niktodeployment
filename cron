@@ -1,0 +1,1 @@
+*/5 * * * * /nikto/program/nikto.pl -h /etc/hosts -config /etc/nikto.conf -o /tmp/out.xml && touch /tmp/done

@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+    nikto:
+        build:
+            context: .
+            dockerfile: nikto.Dockerfile
+        volumes:
+            - out:/tmp:rw
+            - ./nikto.conf:/etc/nikto.conf:ro
+            - ./hosts:/etc/hosts:ro
+        restart: unless-stopped
+
+    look_at_file:
+        build:
+            context: .
+            dockerfile: python.Dockerfile
+        volumes:
+            - out:/tmp:rw
+            - ./out:/out:rw
+        restart: unless-stopped
+
+volumes:
+    out:

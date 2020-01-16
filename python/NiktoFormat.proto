@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package NiktoFormat;
+
+message Scan {
+    message Host {
+        enum Method {
+            GET = 0;
+            POST = 1;
+            HEAD = 2;
+        }
+
+        message Vuln {
+            uint32 id = 1;
+            Method method = 2;
+            string desc = 3;
+            string uri = 4;
+            string link = 5;
+        }
+
+        string host = 1;
+        string ip = 2;
+        uint32 port = 3;
+        string starttime = 4;
+        uint32 checks = 5;
+        repeated Vuln vulns = 6;
+    }
+
+    repeated Host hosts = 1;
+}
